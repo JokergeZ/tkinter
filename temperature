@@ -1,0 +1,31 @@
+import tkinter as tk
+ 
+ 
+def temperature():
+    fahrenheit = t_temperature.get()
+    celsius = (5/9) * (float(fahrenheit) - 32)
+    z_result["text"] = f"{round(celsius, 2)} \N{DEGREE CELSIUS}"
+ 
+window = tk.Tk()
+window.title("Температура")
+window.resizable(width=False, height=False)
+ 
+f_entry = tk.Frame(master=window)
+t_temperature = tk.Entry(master=f_entry, width=10)
+v_temp = tk.Label(master=f_entry, text="\N{DEGREE FAHRENHEIT}")
+ 
+t_temperature.grid(row=0, column=0, sticky="e")
+v_temp.grid(row=0, column=1, sticky="w")
+ 
+bt_convert = tk.Button(
+    master=window,
+    text="\N{RIGHTWARDS BLACK ARROW}",
+    command=temperature
+)
+z_result = tk.Label(master=window, text="\N{DEGREE CELSIUS}")
+ 
+f_entry.grid(row=0, column=0, padx=10)
+bt_convert.grid(row=0, column=1, pady=10)
+z_result.grid(row=0, column=2, padx=10)
+ 
+window.mainloop()
